@@ -25,3 +25,21 @@ assert {
     error_message = "Le corps de la réponse est incorrect"
   }
 }
+
+run "verify_negative_case" {
+  command = apply
+
+  module {
+    source = "../modules/test-endpoint"
+  }
+
+  variables {
+    # On teste une URL qui n'existe pas
+    endpoint = "${run.deploy.api_url}/notfound" 
+  }
+
+  assert {
+    condition     = data.http.test_endpoint.status_code == 404
+    error_message = "L'API aurait dû renvoyer une 404 pour une route inexistante, mais a renvoyé : ${data.http.test_endpoint.status_code}"
+  }
+}
