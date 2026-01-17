@@ -1,18 +1,3 @@
-# Dépendances (le dossier le plus lourd)
-node_modules/
-
-# Rapports de couverture de code (Ex 10)
-coverage/
-
-# Logs d'erreurs npm
-npm-debug.log*
-
-# Fichiers d'environnement (si tu en utilises plus tard pour des secrets)
-.env
-
-# Fichiers système inutiles
-.DS_Store
-Thumbs.db
-
-# Ignorer l'exécutable OpenTofu
-scripts/tofu/tofu.exe
+**/tofu.exe
+**/.terraform/
+**/node_modules/
